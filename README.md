@@ -1,6 +1,9 @@
 # LedTable
 A simple 32x32 Led Table
 
+- why
+    - realy why tho
+
 ## Research
 * Price:  
     * Leds needed: 1024 -> aka 4x 60 * 5 Ledstrips each 15€ = 60 (probably less)  
