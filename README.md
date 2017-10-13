@@ -10,7 +10,7 @@ A simple 32x32 Led Table
     * Interface: 20€
     * Total: 50-150€
 * Library: FastLed
-  * should be able to drive 1024 leds at 30hz
+  * should be able to drive 1024 leds at 30hz
 * Features:
   * Animations
   * Text
