@@ -21,3 +21,4 @@ A simple 32x32 Led Table
 * Urls:
     * [FHT](https://blog.yavilevich.com/2016/08/arduino-sound-level-meter-and-spectrum-analyzer/)
     * [LED Table](https://www.youtube.com/watch?v=D_QBlFIQk-o)
+    * [LED Strip Efficiency](https://github.com/FastLED/FastLED/issues/288)
