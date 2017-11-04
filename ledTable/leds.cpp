@@ -1,25 +1,17 @@
-/*#import "leds.h"
-
+#import "leds.h"
 
 CRGB leds[LEDS_NUM];
 
 void leds_init()
 {
-    FastLED.addLeds<WS2812B, LEDS_DATA_PIN>(leds, LEDS_NUM);
+    FastLED.addLeds<LEDS_TYPE, LEDS_DATA_PIN, LEDS_ORDER>(leds, LEDS_NUM);
+    delay(10);
+    FastLED.show();
 }
 
 void leds_test()
 {
-    leds[0] = CRGB::Red;
-    leds[1] = CRGB::Black;
-    leds[2] = CRGB::Red;
-    leds[3] = CRGB::Black;
-    leds[4] = CRGB::Red;
-    leds[5] = CRGB::Black;
-    leds[6] = CRGB::Red;
-    leds[7] = CRGB::Black;
-    leds[8] = CRGB::Red;
-    leds[9] = CRGB::Black;
+    for (int i = 0; i < LEDS_NUM; i++)
+        leds[i].setRGB(random(0, 100), random(0, 100), random(100, 256));
     FastLED.show();
 }
-*/
