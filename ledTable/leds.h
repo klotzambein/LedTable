@@ -8,10 +8,9 @@
 #import "FastLED.h"
 
 #define LEDS_DATA_PIN 17
-/*#define LEDS_WIDTH 32
-#define LEDS_HEIGHT 32
-#define LEDS_NUM LEDS_HEIGHT * LEDS_WIDTH*/
-#define LEDS_NUM 60
+#define LEDS_WIDTH 21
+#define LEDS_HEIGHT 33
+#define LEDS_NUM LEDS_HEIGHT * LEDS_WIDTH
 #define LEDS_TYPE WS2812B
 #define LEDS_ORDER GRB
 
