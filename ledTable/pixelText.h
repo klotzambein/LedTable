@@ -5,6 +5,8 @@
 
 //text ends with 0xFF
 void drawPixelText(const uint8_t *text, int xStart, int yStart);
+uint16_t getPixelTextLength(const uint8_t *text);
+uint8_t drawPixelTextScrolling(const uint8_t *text, uint8_t t, int yStart);
 
 struct Letter
 {
@@ -54,12 +56,12 @@ struct Letter
      1, 1, 1, 0,
      3},
     /*const Letter letter_C = */
-    {0, 1, 1, 1,
+    {0, 1, 1, 0,
      1, 0, 0, 0,
      1, 0, 0, 0,
      1, 0, 0, 0,
-     0, 1, 1, 1,
-     3},
+     0, 1, 1, 0,
+     2},
     /*const Letter letter_D = */
     {1, 1, 1, 0,
      1, 0, 0, 1,
@@ -68,19 +70,19 @@ struct Letter
      1, 1, 1, 0,
      3},
     /*const Letter letter_E = */
-    {1, 1, 1, 1,
+    {1, 1, 1, 0,
+     1, 0, 0, 0,
+     1, 1, 0, 0,
      1, 0, 0, 0,
      1, 1, 1, 0,
-     1, 0, 0, 0,
-     1, 1, 1, 1,
-     3},
+     2},
     /*const Letter letter_F = */
-    {1, 1, 1, 1,
+    {1, 1, 1, 0,
      1, 0, 0, 0,
-     1, 1, 1, 0,
+     1, 1, 0, 0,
      1, 0, 0, 0,
      1, 0, 0, 0,
-     3},
+     2},
     /*const Letter letter_G = */
     {0, 1, 1, 1,
      1, 0, 0, 0,
@@ -96,19 +98,19 @@ struct Letter
      1, 0, 0, 1,
      3},
     /*const Letter letter_I = */
-    {1, 1, 1, 0,
-     0, 1, 0, 0,
-     0, 1, 0, 0,
-     0, 1, 0, 0,
-     1, 1, 1, 0,
-     2},
+    {1, 0, 0, 0,
+     1, 0, 0, 0,
+     1, 0, 0, 0,
+     1, 0, 0, 0,
+     1, 0, 0, 0,
+     0},
     /*const Letter letter_J = */
-    {0, 0, 0, 1,
-     0, 0, 0, 1,
-     0, 0, 0, 1,
-     1, 0, 0, 1,
-     0, 1, 1, 0,
-     3},
+    {0, 0, 1, 0,
+     0, 0, 1, 0,
+     0, 0, 1, 0,
+     1, 0, 1, 0,
+     0, 1, 0, 0,
+     2},
     /*const Letter letter_K = */
     {1, 0, 0, 1,
      1, 0, 1, 0,
@@ -145,12 +147,12 @@ struct Letter
      0, 1, 1, 0,
      3},
     /*const Letter letter_P = */
-    {1, 1, 1, 0,
-     1, 0, 0, 1,
-     1, 1, 1, 0,
+    {1, 1, 0, 0,
+     1, 0, 1, 0,
+     1, 1, 0, 0,
      1, 0, 0, 0,
      1, 0, 0, 0,
-     3},
+     2},
     /*const Letter letter_Q = */
     {0, 1, 1, 0,
      1, 0, 0, 1,
@@ -190,15 +192,15 @@ struct Letter
     {1, 0, 0, 1,
      1, 0, 0, 1,
      1, 0, 0, 1,
-     1, 0, 0, 1,
-     0, 1, 1, 0,
+     0, 1, 0, 1,
+     0, 0, 1, 0,
      3},
     /*const Letter letter_W = */
     {1, 0, 0, 1,
      1, 0, 0, 1,
      1, 0, 0, 1,
-     1, 0, 0, 1,
      1, 1, 1, 1,
+     1, 0, 0, 1,
      3},
     /*const Letter letter_X = */
     {1, 0, 0, 1,

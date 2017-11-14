@@ -10,7 +10,7 @@ void drawPixelText(const uint8_t *text, int xStart, int yStart)
             if (xStart >= LEDS_WIDTH)
                 return;
             for (int x = 0, xReal = xStart;
-                 x < letters[*text].width + 1; 
+                 x < letters[*text].width + 1;
                  x++, xReal++)
             {
                 for (int y = 0, yReal = yStart;
@@ -28,4 +28,30 @@ void drawPixelText(const uint8_t *text, int xStart, int yStart)
         xStart += letters[*text].width + 2;
         text++;
     }
+}
+
+uint16_t getPixelTextLength(const uint8_t *text)
+{
+    uint16_t length = 0;
+    while (*text != 0xFF)
+    {
+        length += letters[*text++].width + 2;
+    }
+    if (length >= 1)
+        length--;
+    return length;
+}
+
+uint8_t drawPixelTextScrolling(const uint8_t *text, uint8_t t, int yStart, int offset = 4)
+{
+    uint16_t length = getPixelTextLength(text);
+
+    if (length <= LEDS_WIDTH)
+    {
+        drawPixelText(text, 0, yStart);
+        return 0;
+    }
+    drawPixelText(text, -t, yStart);
+    drawPixelText(text, length + 4 - t, yStart);
+    return (t + 1) % (length + 4);
 }
