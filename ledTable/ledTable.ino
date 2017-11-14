@@ -1,4 +1,5 @@
-#import "leds.h"
+#include "leds.h"
+#include "pixelText.h"
 
 void setup()
 {
