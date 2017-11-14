@@ -42,7 +42,7 @@ uint16_t getPixelTextLength(const uint8_t *text)
     return length;
 }
 
-uint8_t drawPixelTextScrolling(const uint8_t *text, uint8_t t, int yStart, int offset = 4)
+uint8_t drawPixelTextScrolling(const uint8_t *text, uint8_t t, int yStart)
 {
     uint16_t length = getPixelTextLength(text);
 
