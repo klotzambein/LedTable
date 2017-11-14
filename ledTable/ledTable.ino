@@ -6,20 +6,25 @@ void setup()
     leds_init();
     //leds_test();
 }
+
+//                      m   a  v   e  r   i  c  k
+const uint8_t text[] = {12, 0, 21, 4, 17, 8, 2, 10, 0xFF};
+
 uint8_t h = 0;
-uint8_t k = 0;
 void loop()
 {
     for (uint16_t i = 0; i < LEDS_NUM; i++)
-        leds[i].setHSV((i + h) % 256, 255, 127);
+        setHSV_Z(i, (i + h) % 256, 255, 127);
 
-    for (uint16_t i = k; i < LEDS_NUM && i < k + 10; i++)
-        leds[i].setRGB(255, 255, 255);
+    drawPixelText(&text[0], 1, 1);
 
-    FastLED.show();
-    delay(50);
+    setRGB(3, 3, 0, 255, 0);
+    setRGB(3, 4, 255, 0, 0);
+    setRGB(4, 3, 0, 0, 255);
+    setRGB(4, 4, 0, 255, 255);
 
-    if (--k > 197)
-        k = 197;
-    h++;
+    leds_show();
+
+    delay(100);
+    h += 2;
 }

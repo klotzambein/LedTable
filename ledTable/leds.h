@@ -30,8 +30,17 @@ inline void setHSV(uint8_t x, uint8_t y, uint8_t h, uint8_t s, uint8_t v)
     else
         leds[(y | 0x01) * LEDS_WIDTH - 1 - x].setHSV(h, s, v);
 }
+//ZigZag
+inline void setRGB_Z(uint8_t i, uint8_t r, uint8_t g, uint8_t b)
+{
+    leds[i].setRGB(r, g, b);
+}
+inline void setHSV_Z(uint8_t i, uint8_t h, uint8_t s, uint8_t v)
+{
+    leds[i].setHSV(h, s, v);
+}
 
-void leds_test();
+void leds_show();
 void leds_init();
 
 #endif

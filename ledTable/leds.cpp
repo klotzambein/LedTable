@@ -9,9 +9,7 @@ void leds_init()
     FastLED.show();
 }
 
-void leds_test()
+void leds_show()
 {
-    for (int i = 0; i < LEDS_NUM; i++)
-        leds[i].setRGB(random(0, 100), random(0, 100), random(100, 256));
     FastLED.show();
 }

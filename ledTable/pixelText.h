@@ -4,7 +4,7 @@
 #include "Arduino.h"
 
 //text ends with 0xFF
-void drawPixelText(uint8_t *text, int xStart, int yStart);
+void drawPixelText(const uint8_t *text, int xStart, int yStart);
 
 struct Letter
 {
