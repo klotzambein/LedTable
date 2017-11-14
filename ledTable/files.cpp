@@ -1,9 +1,9 @@
-#import "files.h"
+#include "files.h"
 
-#import "Arduino.h"
-#import "Wire.h"
-#import <EEPROM.h>
-#import "text.h"
+#include "Arduino.h"
+#include "Wire.h"
+#include <EEPROM.h>
+#include "text.h"
 
 uint8_t to5bitChar(char c);
 char toNormalChar(uint8_t c);
@@ -68,10 +68,12 @@ int8_t createFile(char *addr, uint16_t size)
     }
     writePage(addr, freePages[size - 1], freePages[size - 1]);
     saveFilePage(freePages[size - 1]);
+    return freePages[0];
 }
 
 bool writeToFile(uint8_t page, uint16_t offset, uint16_t size)
 {
+    return 0;
     /*page += offset >> 8;
     for (int i = 0; i < )*/
 }

@@ -1,8 +1,8 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#import "Arduino.h"
-#import "makro.h"
+#include "Arduino.h"
+#include "makro.h"
 
 extern char TEXT_ZERO;
 

@@ -1,7 +1,7 @@
 #ifndef FILES_H
 #define FILES_H
 
-#import "Arduino.h"
+#include "Arduino.h"
 
 #define FILE_STORAGE_ADDRESS 0x0 //TODO
 #define FILE_PAGES_EEPROM_ADDRESS 512
