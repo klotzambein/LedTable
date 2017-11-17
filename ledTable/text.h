@@ -2,7 +2,7 @@
 #define TEXT_H
 
 #include "Arduino.h"
-#include "makro.h"
+#include "macro.h"
 
 extern char TEXT_ZERO;
 

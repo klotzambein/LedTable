@@ -1,4 +1,4 @@
-#import "text.h"
+#include "text.h"
 
 char TEXT_ZERO = 0;
 
@@ -38,6 +38,8 @@ char ToHex(uint8_t number)
         return 'E';
     case 0xF:
         return 'F';
+    default:
+        return 0;
     }
 }
 
