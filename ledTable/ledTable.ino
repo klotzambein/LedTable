@@ -19,23 +19,24 @@ void setup()
 {
 #ifdef DEBUG_ENABLED
 #endif
-  Serial.begin(115200);
-  //Serial.println("writing:");
-  Serial1.begin(115200);
-  //Serial1.print("AT+CIOBAUD=9600\r\n");
+    Serial.begin(115200);
+    //Serial.println("writing:");
+    Serial1.begin(76800, SERIAL_8N1);
+    //Serial1.print("AT+CIOBAUD=9600\r\n");
 }
 
 void loop()
 {
-  if (Serial1.available())
-  {
-    Serial.write(Serial1.read());
-  }
-  if (Serial.available())
-  {
-    Serial1.write(Serial.read());
-  }
-  /*  // listen for incoming clients
+    if (Serial1.available())
+    {
+        Serial.write(Serial1.read());
+    }
+    if (Serial.available())
+    {
+        Serial.write(Serial.peek());
+        Serial1.write(Serial.read());
+    }
+    /*  // listen for incoming clients
   WiFiEspClient client = server.available();
   if (client)
   {
