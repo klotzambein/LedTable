@@ -9,8 +9,8 @@
 #define GOTO_STATE(id, data) \
     changeState(id, data);   \
     break;
-#define REPEAT_STATE(dt) \
-    delay(t);            \
+#define REPEAT_STATE(dur)           \
+    nextStateTime = millis() + dur; \
     break;
 
 #define S_INIT 0
