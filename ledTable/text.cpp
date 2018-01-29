@@ -41,6 +41,7 @@ char ToHex(uint8_t number)
     default:
         return 0;
     }
+    return 0;
 }
 
 int sprintHex(char *str, uint8_t number)
