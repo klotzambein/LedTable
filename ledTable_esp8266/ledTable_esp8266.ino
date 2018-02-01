@@ -7,6 +7,12 @@ ESP8266WebServer server(80);
 
 const int led = 13;
 
+char cmdBuf[4];
+byte cmd = 0;
+char dataBuf[128];
+byte dataBufPos = 0;
+bool readingData = false;
+
 void handleRoot()
 {
     digitalWrite(led, 1);
@@ -112,7 +118,7 @@ void settupServer()
     serverStarted = true;
 }
 
-void connectToWifi(char *ssid, char *password)
+void connectToWifi(const char *ssid, const char *password)
 {
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
@@ -129,4 +135,67 @@ void connectToWifi(char *ssid, char *password)
     Serial.println(ssid);
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
+}
+
+void parseCommand()
+{
+    while (!cmd && Serial.available())
+    {
+        char c = Serial.read();
+        if (c == '?')
+        {
+            if (memcmp(cmdBuf, 'HNDL'))
+                cmd = 1;
+            else if (memcmp(cmdBuf, 'WIFI'))
+                cmd = 2;
+            else if (memcmp(cmdBuf, 'MYIP'))
+                cmd = 3;
+        }
+        else if (c == ';')
+        {
+            if (memcmp(cmdBuf, 'PING'))
+                cmd = 4;
+        }
+        else if (c == ':')
+        {
+            if (memcmp(cmdBuf, 'CNTI'))
+                cmd = 5;
+            else if (memcmp(cmdBuf, 'WIFI'))
+                cmd = 6;
+
+            readingData = true;
+            dataBufPos = 0;
+        }
+        cmdBuf[0] = cmdBuf[1];
+        cmdBuf[1] = cmdBuf[2];
+        cmdBuf[2] = cmdBuf[3];
+        cmdBuf[4] = c;
+    }
+}
+
+void parseData()
+{
+    while (readingData && Serial.available())
+    {
+        char c = Serial.read();
+        if (c == ';')
+        {
+            readingData = false;
+            return;
+        }
+        dataBuf[dataBufPos++] = c;
+        if (dataBufPos >= 128)
+            dataBufPos = 0;
+    }
+}
+
+void execCommand()
+{
+    if (cmd && !readingData)
+    {
+        switch (cmd)
+        {
+        case 1:
+        }
+    }
 }

@@ -6,7 +6,7 @@ The ESP receives commands and executes them. The command format is one of the fo
 - `[CMD (4 bytes)];` Executes command.
 - `[CMD (4 bytes)]:[DATA (may not contain ';')];` Executes command with data.
 - `[CMD (4 bytes)]=[DATA (may not contain ';')];` Sets var to data.
-- `[CMD (4 bytes)]?;` Gets value or state.
+- `[CMD (4 bytes)]?` Gets value or state.
 
 The answer format is one of the following:
 - `OK;\n` successful execution
@@ -20,11 +20,11 @@ The answer format is one of the following:
   Response: `OK;ER:[err];`
 - `WIFI:[ssid]+[pw];` Connect to wifi.  
   Response: `OK;|ER:[error];`
-- `WIFI?;` Get wifi state. (1: connected; 0: disconnected)  
+- `WIFI?` Get wifi state. (1: connected; 0: disconnected)  
   Response: `OK:(0|1);`
-- `MYIP?;` Get IP  
+- `MYIP?` Get IP  
   Response: `OK:[4 byte IP];|ER:No Connection;`
-- `HNDL?;` Are there any events to handle  
+- `HNDL?` Are there any events to handle  
   Response: `OK;|OK:[4 byte event CODE][2 byte data size][data];`
 - `CNTI:[COMMAND];` initialize continuous data delivery  
   Response: `OK;|ER:[error];` over time: `DT:[1 byte data size][data];`
