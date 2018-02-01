@@ -23,7 +23,7 @@ The answer format is one of the following:
 - `WIFI?` Get wifi state. (1: connected; 0: disconnected)  
   Response: `OK:(0|1);`
 - `MYIP?` Get IP  
-  Response: `OK:[4 byte IP];|ER:No Connection;`
+  Response: `OK:[IP];|ER:No Connection;`
 - `HNDL?` Are there any events to handle  
   Response: `OK;|OK:[4 byte event CODE][2 byte data size][data];`
 - `CNTI:[COMMAND];` initialize continuous data delivery  

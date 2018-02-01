@@ -12,6 +12,7 @@ byte cmd = 0;
 char dataBuf[128];
 byte dataBufPos = 0;
 bool readingData = false;
+unsigned long cmdState = 0;
 
 void handleRoot()
 {
@@ -195,7 +196,64 @@ void execCommand()
     {
         switch (cmd)
         {
-        case 1:
+        case 1: //HNDL?
+            Serial.println("ER:not implemented;");
+            cmd = 0;
+            break;
+        case 2: //WIFI?
+            Serial.print("OK:");
+            Serial.write(WiFi.status() == WL_CONNECTED ? '1' : '0');
+            Serial.println(";");
+            cmd = 0;
+            break;
+        case 3: //MYIP?
+            Serial.print("OK:");
+            Serial.println(WiFi.localIP(););
+            Serial.println(";");
+            cmd = 0;
+            break;
+        case 4: //PING;
+            Serial.println("OK;");
+            cmd = 0;
+            break;
+        case 5: //CNTI:
+            Serial.println("ER:not implemented;");
+            cmd = 0;
+            break;
+        case 6: //WIFI:
+            if (cmdState == 0)
+            {
+                int i = 0;
+                for (; i < dataBufPos; i++)
+                    if (dataBuf[i] == '+')
+                    {
+                        dataBuf[i++] = 0;
+                        break;
+                    }
+                if (i == dataBufPos || dataBufPos = 128)
+                {
+                    Serial.println("ER:malformed data;");
+                    cmd = 0;
+                    return;
+                }
+                WiFi.mode(WIFI_STA);
+                WiFi.begin(ssid, password);
+                cmdState = millis();
+            }
+            else
+            {
+                if (WiFi.status() == WL_CONNECTED)
+                {
+                    cmd = 0;
+                    cmdState = 0;
+                    Serial.println("OK;");
+                }
+                else if (millis() - cmdState > 10000)
+                {
+                    Serial.println("ER:timeout;");
+                }
+            }
+            break;
         }
     }
 }
