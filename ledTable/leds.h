@@ -3,13 +3,13 @@
 
 #include "Arduino.h"
 
-#define FASTLED_ALLOW_INTERRUPTS 1
+#define FASTLED_ALLOW_INTERRUPTS 0
 #define FASTLED_INTERRUPT_RETRY_COUNT 2
 #include "FastLED.h"
 
 #define LEDS_DATA_PIN 17
-#define LEDS_WIDTH 33
-#define LEDS_HEIGHT 21
+#define LEDS_WIDTH 16
+#define LEDS_HEIGHT 22
 #define LEDS_NUM LEDS_HEIGHT *LEDS_WIDTH
 #define LEDS_TYPE WS2812B
 #define LEDS_ORDER GRB
@@ -35,7 +35,7 @@ inline void setRGB_Z(uint8_t i, uint8_t r, uint8_t g, uint8_t b)
 {
     leds[i].setRGB(r, g, b);
 }
-inline void setHSV_Z(uint8_t i, uint8_t h, uint8_t s, uint8_t v)
+inline void setHSV_Z(uint16_t i, uint8_t h, uint8_t s, uint8_t v)
 {
     leds[i].setHSV(h, s, v);
 }

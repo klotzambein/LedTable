@@ -1,4 +1,4 @@
-#import "text.h"
+#include "text.h"
 
 char TEXT_ZERO = 0;
 
@@ -39,6 +39,7 @@ char ToHex(uint8_t number)
     case 0xF:
         return 'F';
     }
+    return 0;
 }
 
 int sprintHex(char *str, uint8_t number)

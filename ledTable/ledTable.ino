@@ -7,5 +7,5 @@ void setup()
 
 void loop()
 {
-    stateMachine();
+    stateMachine(255);
 }

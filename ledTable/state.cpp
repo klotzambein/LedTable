@@ -1,12 +1,11 @@
 #include "state.h"
-#include "Arduino.h"
 #include "leds.h"
 #include "pixelText.h"
 
 #define GOTO_STATE(id) \
     changeState(id);   \
     break;
-#define GOTO_STATE(id, data) \
+#define GOTO_STATE_DATA(id, data) \
     changeState(id, data);   \
     break;
 #define REPEAT_STATE(dur)           \
@@ -55,7 +54,7 @@ void stateMachine(uint8_t stateID = 255)
         for (uint16_t i = 0; i < LEDS_NUM; i++)
             setHSV_Z(i, (i + State.data.ledTest.hue) % 256, 255, 50);
 
-        State.data.ledTest.scroll = drawPixelTextScrolling(&text[0], State.data.ledTest.scroll, 0);
+        //State.data.ledTest.scroll = drawPixelTextScrolling(&text[0], State.data.ledTest.scroll, 0);
 
         leds_show();
 
@@ -70,7 +69,7 @@ void stateMachine(uint8_t stateID = 255)
 
 void settupStateMachine()
 {
-    State.id = STATE_INIT;
+    State.id = S_INIT;
     delay(1); // Ensures that millis never returns Zero (ignoring overflow)
 }
 
@@ -78,7 +77,7 @@ void changeState(uint8_t next, void *data)
 {
     State.id = next;
     //Data Reset Logic
-    switch (State.ID)
+    switch (State.id)
     {
     case S_LEDTEST:
         State.data.ledTest.scroll = 0;
